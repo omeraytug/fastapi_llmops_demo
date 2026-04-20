@@ -10,7 +10,7 @@ support_agent = Agent(
     model=MODEL_MEDIUM, system_prompt=load_prompt("support_agent_system_prompt").format(num_sentences=3))
 
 @support_agent.tool_plain
-def lookup_faq(cateogry:str) -> str:
+def lookup_faq(category:str) -> str:
     f"""{load_prompt("lookup_faq_description").format()}"""
     faq = {
         "refund": "Full refunds within 30 days with receipt.",
@@ -19,7 +19,7 @@ def lookup_faq(cateogry:str) -> str:
     }
 
     return faq.get(
-        cateogry, 
+        category, 
         "Question not found. Inform customer that available categories are: refund, shipping, warranty")
 
 
