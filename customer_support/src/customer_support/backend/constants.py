@@ -1,5 +1,5 @@
 from pathlib import Path
-
+import mlflow 
 
 MODEL_SMALL="openrouter:liquid/lfm-2.5-1.2b-instruct:free"
 MODEL_MEDIUM="openrouter:nvidia/nemotron-3-nano-30b-a3b:free"
@@ -9,3 +9,5 @@ LLM_JUDGE="openrouter:/nvidia/nemotron-3-nano-30b-a3b:free"
 
 
 MONITORING_PATH = Path(__file__).parents[1] / "monitoring"
+
+mlflow.set_tracking_uri(f"sqlite:///{MONITORING_PATH / 'mlflow.db'}")
